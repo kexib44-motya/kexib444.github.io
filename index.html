@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>акак</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .switch-container {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body>
+    <div class="switch-container">
+        <span>Быть Викой          </span>
+        <label class="switch">
+            <input type="checkbox" id="switch1" onchange="toggleSwitches(this)">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="switch-container">
+        <span>Быть адыкватным</span>
+        <label class="switch">
+            <input type="checkbox" id="switch2" onchange="toggleSwitches(this)">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <script>
+        function toggleSwitches(clickedSwitch) {
+            const switch1 = document.getElementById('switch1');
+            const switch2 = document.getElementById('switch2');
+            
+            if (clickedSwitch === switch1 && switch1.checked) {
+                switch2.checked = false;
+            } else if (clickedSwitch === switch2 && switch2.checked) {
+                switch1.checked = false;
+            }
+        }
+    </script>
+</body>
+</html>
